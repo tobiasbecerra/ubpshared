@@ -1,0 +1,770 @@
+/* ########################################### */
+/* Global                                    */
+/* ########################################### */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #fff;
+    color: #FEFEFE;
+}
+
+body {
+    display: flex; /* Habilita Flexbox */
+    flex-direction: column; /* Organiza los elementos hijos en columna */
+    min-height: 100vh;
+}
+
+a {
+    color: #a81c34;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+/* ########################################### */
+/* Forums.html                               */
+/* ########################################### */
+.container {
+    margin: 20px;
+    padding: 20px;
+    color: #333;
+    flex-grow: 1; /* Hace que el contenedor principal ocupe todo el espacio disponible */
+}
+
+.subforum {
+    margin-top: 20px;
+}
+
+.subforum-title {
+    background-color: #292B2E;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 4px;
+    color: #FEFEFE; /* Asegurado para mantener el texto legible sobre fondo oscuro */
+}
+
+.subforum-row {
+    display: grid;
+    grid-template-columns: 6% 33% 13% 16% 32%;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: stretch;
+}
+
+.subforum-column {
+    padding: 10px;
+    margin: 4px;
+    border-radius: 5px;
+    background-color: #868686;
+    color: #FEFEFE; /* Asegurado para mantener el texto legible sobre fondo gris */
+}
+
+.subforum-description * {
+    margin-block: 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subforum-icon i {
+    font-size: 30px;
+}
+
+.subforum-devider {
+    display: none;
+}
+
+/* For the smartphones */
+@media screen and (max-width: 460px) {
+    .container {
+        margin: 10px;
+        padding: 10px;
+        color: #333; /* Asegurado para asegurar legibilidad en el contenedor móvil si su fondo es blanco/claro */
+    }
+
+    .subforum-row {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .subforum-devider {
+        display: block;
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(190, 190, 190, 0), rgba(255, 255, 255, 0.75), rgba(190, 190, 190, 0));
+    }
+}
+
+/* For the tablets */
+@media screen and (min-width: 460px) and (max-width: 1024px) {
+    .container {
+        margin: 15px;
+        padding: 15px;
+        color: #333; /* Asegurado para asegurar legibilidad en el contenedor de tablet si su fondo es blanco/claro */
+    }
+
+    .subforum-row {
+        display: grid;
+        grid-template-columns: 7% 32% 13% 18% 30%;
+        gap: 8px;
+    }
+
+    .subforum-icon i {
+        font-size: 25px;
+    }
+}
+
+/* Header Section */
+header {
+    margin-inline: 10px;
+    color: #333; /* Asegurado para texto en el header si no tiene un color específico */
+}
+
+/* Nav Bar styles */
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navigation {
+    background-color: #a81c34; /* Cambiado al color solicitado */
+    padding: 10px;
+    width: 45%;
+    display: inline-block;
+    border-radius: 5px;
+    max-height: 80px;
+    margin-right: 10px;
+    color: #fff; /* Asegurado para el texto de navegación */
+}
+
+.close-icon i {
+    font-size: 60px;
+    float: left;
+    cursor: pointer;
+    color: #fff; /* Asegurado para el icono */
+}
+
+.nav-list {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.nav-item a {
+    float: right;
+    display: block;
+    text-align: center;
+    margin-inline: 20px;
+    font-size: 20px;
+    padding: 10px;
+    color: #fff;
+}
+
+.nav-item a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.hide {
+    display: none;
+}
+
+.bar-icon {
+    font-size: 60px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #a81c34;
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: aquire;
+    src: url(aquire.otf);
+}
+
+.brand {
+    font-size: 60px;
+    font-weight: normal;
+    text-decoration: none;
+    display: inline-block;
+    font-family: aquire;
+    color: #a81c34; /* Título UBPSHARED en color solicitado */
+    margin-right: auto; /* Empuja el brand a la izquierda y el auth-links a la derecha */
+}
+
+/*Navbar for the smartphones*/
+@media screen and (max-width: 460px) {
+    .navigation {
+        max-height: auto;
+    }
+
+    .close-icon i {
+        font-size: 30px;
+    }
+
+    .nav-item a {
+        float: left;
+        display: inline;
+        margin-inline: 3px;
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .bar-icon {
+        font-size: 30px;
+    }
+
+    .brand {
+        font-size: 20px;
+    }
+}
+
+/* Search Box styles */
+.search-box {
+    border: solid 1px #a81c34;
+    margin-top: 20px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 2px 3px #a81c34;
+    background-color: #a81c34;
+    color: #fff; /* Asegurado para el texto dentro del search-box */
+}
+
+
+.search-box input {
+    padding: 10px;
+    width: 400px;
+    color: #000; /* Asegurado para el texto dentro del input */
+}
+
+.search-box button {
+    padding: 10px;
+    background-color: #fff;
+    color: #000000;
+}
+
+.search-box button:hover {
+    background-color: #000000;
+    color: #fff;
+    box-shadow: 1px 2px 3px #fff;
+}
+
+/* search box for smartphones */
+@media screen and (max-width: 460px) {
+    .search-box input, .search-box button, .search-box select {
+        min-width: 300px;
+        margin-top: 5px;
+    }
+}
+
+/* forum info Styling */
+.forum-info {
+    padding: 20px;
+    background-color: #111314;
+    color: #FEFEFE; /* Asegurado para el texto en la información del foro */
+}
+
+.chart {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    position: relative;
+    width: 100%;
+    margin-top: auto; /* Esto empuja el footer al final si hay espacio */
+    padding: 20px;
+    background-color: #a81c34;
+    display: block;
+    text-align: center;
+    color: #fff;
+    flex-shrink: 0; /* Evita que el footer se encoja */
+}
+
+/* ########################################### */
+/* posts.html                                */
+/* ########################################### */
+
+/* posts table's head */
+.table-head {
+    display: flex;
+}
+
+.table-head div {
+    padding: 5px;
+    margin: 2px;
+    background-color: #2C2C2C;
+    font-weight: bold;
+    color: #FEFEFE; /* Asegurado para el texto en las cabeceras de tabla */
+}
+
+.table-head .status {
+    flex: 5%;
+}
+
+.table-head .subjects {
+    flex: 70%;
+}
+
+.table-head .replies {
+    flex: 10%;
+}
+
+.table-head .last-reply {
+    flex: 15%;
+}
+
+/* posts table's body */
+.table-row {
+    display: flex;
+}
+
+.table-row .status, .table-row .subjects, .table-row .replies, .table-row .last-reply {
+    padding: 5px;
+    margin: 2px;
+    background-color: #131415;
+    color: #FEFEFE; /* Asegurado para el texto en las filas de tabla */
+}
+
+.table-row .status {
+    flex: 5%;
+    font-size: 30px;
+    text-align: center;
+}
+
+.table-row .subjects {
+    flex: 70%;
+}
+
+.table-row .replies {
+    flex: 10%;
+}
+
+.table-row .last-reply {
+    flex: 15%;
+}
+
+/* navigation path*/
+.navigate {
+    margin-block: 20px;
+    font-weight: lighter;
+    font-size: 24px;
+    color: #FEFEFE; /* Asegurado para el texto de navegación del path */
+}
+
+.navigate a {
+    color: #fff;
+}
+
+.navigate a:hover {
+    color: #FF0042;
+    font-weight: bolder;
+}
+
+/* Pagination*/
+.pagination {
+    padding: 20px;
+    font-size: 15px;
+}
+
+.pagination a {
+    color: #fff;
+    margin-inline: 5px;
+    padding: 5px 10px;
+    border: solid 0.5px #fff;
+}
+
+.pagination a:hover {
+    opacity: 0.5;
+}
+
+.note {
+    background-color: #111314;
+    padding: 20px;
+    display: block;
+    color: #FEFEFE; /* Asegurado para el texto de la nota */
+}
+
+.note span {
+    font-size: 20px;
+    margin-block: 5px;
+}
+
+/* ########################################### */
+/* detail.html                               */
+/* ########################################### */
+
+.head {
+    display: flex;
+    background-color: #2C2C2C;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FEFEFE; /* Asegurado para el texto del encabezado */
+}
+
+.authors {
+    flex: 15%;
+}
+
+.content {
+    flex: 80%;
+}
+
+.body {
+    display: flex;
+    background-color: #8c8c8c !important;
+    padding: 10px;
+    margin-top: 5px;
+    color: #FEFEFE; /* Asegurado para el texto del cuerpo */
+}
+
+.body .authors .username {
+    font-size: 25px;
+}
+
+.body .authors img {
+    max-width: 50px;
+    max-height: 80px;
+}
+
+.body .content .comment button {
+    border: none;
+    padding: 10px;
+    font-weight: bolder;
+    box-shadow: 4px 6px #fff;
+    cursor: pointer;
+    float: right;
+    color: #000; /* Asegurado para el texto del botón */
+}
+
+/* comment section */
+.comment-area {
+    margin-bottom: 50px;
+}
+
+.comment-area textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    margin-block: 10px;
+    color: #000; /* Asegurado para el texto dentro del textarea */
+}
+
+.comment-area input {
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #000; /* Asegurado para el texto del input */
+}
+
+.comment-area input:hover {
+    border: solid 1px #000000;
+}
+
+/* Estilo para los enlaces de Login y Register y el separador */
+.auth-links {
+    margin-left: auto;
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    gap: 15px; /* Manteniendo tu gap existente */
+}
+
+.auth-links .separator {
+    margin: 0 8px; /* Ajusta el espacio a los lados del separador */
+    color: #a81c34; /* Cambiado a tu color deseado para el separador */
+    font-size: 0.9em; /* Ajusta el tamaño si es necesario */
+}
+
+.auth-link {
+    color: #a81c34; /* ¡CAMBIADO AQUÍ! Este es el color del brand UBPSHARED */
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+    white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para el ícono de casita (home) si lo incluyes en el header.php */
+.auth-links .fa-home {
+    font-size: 1.1em;
+    padding-right: 2px; /* Pequeño espacio a la derecha del ícono */
+    color: #a81c34; /* Cambiado para que coincida con el color de los enlaces */
+}
+
+/* Estilos para el contenedor de login */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #a81c34;
+    border-radius: 10px;
+    box-shadow: 2px 4px 6px #a81c34;
+    background-color: #fff;
+    text-align: center;
+    color: #000; /* Asegurado para el texto general del contenedor de login */
+}
+
+.login-container h1 {
+    color: #a81c34;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form label {
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+}
+
+.login-form input {
+    padding: 10px;
+    border: 1px solid #a81c34;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000; /* Asegurado para el texto dentro de los inputs del formulario de login */
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #a81c34;
+    box-shadow: 0 0 5px #a81c34;
+}
+
+.login-button {
+    padding: 10px;
+    background-color: #a81c34;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background-color: #870f26;
+}
+
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #000;
+}
+
+.register-link a {
+    color: #a81c34;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para el contenedor de registro */
+.register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #a81c34;
+    border-radius: 10px;
+    box-shadow: 2px 4px 6px #a81c34;
+    background-color: #fff;
+    text-align: center;
+    color: #000; /* Asegurado para el texto general del contenedor de registro */
+}
+
+.register-container h1 {
+    color: #a81c34;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.register-form label {
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+    margin-bottom: -10px;
+}
+
+.register-form input {
+    padding: 10px;
+    border: 1px solid #a81c34;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000; /* Asegurado para el texto dentro de los inputs del formulario de registro */
+}
+
+.register-form input:focus {
+    outline: none;
+    border-color: #a81c34;
+    box-shadow: 0 0 5px #a81c34;
+}
+
+.register-button {
+    padding: 10px;
+    background-color: #a81c34;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.register-button:hover {
+    background-color: #870f26;
+}
+
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+    color: #000;
+}
+
+.login-link a {
+    color: #a81c34;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.publicacion-form-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    color: #000; /* Asegurado para el texto general del contenedor de publicación */
+}
+
+.publicacion-form-container h2 {
+    color: #a81c34;
+    margin-bottom: 18px;
+    font-size: 1.3em;
+}
+
+.publicacion-form-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+}
+
+.publicacion-form-container input[type="text"],
+.publicacion-form-container textarea,
+.publicacion-form-container select,
+.publicacion-form-container input[type="file"] {
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 1em;
+    color: #000; /* Asegurado para el texto dentro de los inputs/textareas/selects */
+}
+
+.publicacion-form-container button[type="submit"] {
+    background: #a81c34;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+
+.publicacion-form-container button[type="submit"]:hover {
+    background: #7a1426;
+}
+
+.about-container {
+    max-width: 600px;
+    margin: 30px auto; /* margen inferior aumentado */
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #a81c34;
+    border-radius: 10px;
+    box-shadow: 2px 4px 6px #a81c34;
+    color: #000; /* Asegurado para el texto general del contenedor "about" */
+}
+
+.about-container h1 {
+    text-align: center;
+    color: #a81c34;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.about-section, .mission-section, .vision-section, .values-section, .team-section, .contact-section {
+    margin-bottom: 10px;
+}
+
+.about-section p, .mission-section p, .vision-section p, .values-section ul, .team-section ul, .contact-section p {
+    font-size: 12px;
+    line-height: 1;
+    color: #000;
+}
+
+.about-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.mission-section h2, .vision-section h2, .values-section h2, .team-section h2, .contact-section h2 {
+    color: #a81c34;
+    font-size: 12px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.values-section ul, .team-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.values-section li, .team-section li {
+    margin-bottom: 5px;
+}
